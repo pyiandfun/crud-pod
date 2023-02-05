@@ -13,7 +13,17 @@ include('update.php');
 </head>
 <body>
   <button type="submit" class="btn btn-secondary"><a href="index.php" class="text-light">Add User+</a></button>
-
+<div class="mesage">
+  <p>
+    <?php
+      session_start();
+      if(!empty($_SESSION) && $_SESSION['msg']){
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+      }
+    ?>
+  </p>
+</div>
 <table class="table">
   <thead>
     <tr>

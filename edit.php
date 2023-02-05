@@ -5,9 +5,6 @@
         $select=$pdo->prepare("SELECT * FROM crud WHERE id=$id");
         $select->execute();
         $row=$select->fetch(PDO::FETCH_OBJ);
-        // $username=$row->username;
-        // $email=$row->email;
-        // print_r($row);
     }
 
 ?>
@@ -18,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>CRUD Operation</title>
+    <style>
+        .del{cursor:pointer;}
+    </style>
   </head>
   <body>
         <div class="container m-5">
@@ -32,13 +32,16 @@
                     <input type="hidden" name="id" class="form-control" value="<?php echo $row->id;?>">
                 </div>
                 <input type="submit" class="btn btn-primary" name="edit"  value="Save">
-                <input onclick="myDelete()" type="submit" class="btn btn-primary" name="delete"  value="Delete">
             </form>
+            <br>
+            <a onclick="myDelete()" class="del">Delete</a>
         </div>
         
 <script>
     function myDelete() {
-        confirm("Are you sure to Delete?!");
+        if(confirm("Are you sure to Delete?!")){
+            window.location.replace('delete.php?delete="1"&id="<?=$row->id?>"')
+        }
     }
 </script>
   </body>
