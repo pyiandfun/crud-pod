@@ -19,4 +19,18 @@ if(isset($_POST['edit'])){
         }
     }
 }
+
+
+if (isset($_POST['delete'])) { 
+    $id = $_POST['id'];
+    $username=$_POST['username'];
+    $email=$_POST['email'];
+    $delete=$pdo->prepare("DELETE FROM crud WHERE id=$id");
+    $delete->execute();
+    if($delete->rowCount()){
+        header('Location:list.php');
+        echo "id$id is successfully deleted!";
+        
+    }
+}
 ?>

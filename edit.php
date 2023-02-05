@@ -32,7 +32,14 @@
                     <input type="hidden" name="id" class="form-control" value="<?php echo $row->id;?>">
                 </div>
                 <input type="submit" class="btn btn-primary" name="edit"  value="Save">
+                <input onclick="myDelete()" type="submit" class="btn btn-primary" name="delete"  value="Delete">
             </form>
         </div>
+        
+<script>
+    function myDelete() {
+        confirm("Are you sure to Delete?!");
+    }
+</script>
   </body>
 </html>
